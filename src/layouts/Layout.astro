@@ -11,13 +11,23 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
- <body>
-    <nav class="flex gap-4 p-4">
-      <a href="/species/Adelie">Adelie</a>
-      <a href="/species/Gentoo">Gentoo</a>
-      <a href="/species/Chinstrap">Chinstrap</a>
+  <body>
+    <nav class="p-4">
+      <select id="species">
+        <option value="">Toutes les espèces</option>
+        <option value="Adelie">Adelie</option>
+        <option value="Chinstrap">Chinstrap</option>
+        <option value="Gentoo">Gentoo</option>
+      </select>
     </nav>
     <slot />
+
+    <script>
+      document.querySelector("#species")?.addEventListener("change", (evt) => {
+        const value = (evt.target as HTMLSelectElement).value;
+        location.pathname = value ? "/species/" + value + "/" : "/";
+      });
+    </script>
   </body>
 </html>
 

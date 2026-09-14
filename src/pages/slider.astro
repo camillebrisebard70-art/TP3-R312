@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+
+const speciesList = ["Adelie", "Chinstrap", "Gentoo"];
+---
+
+<Layout>
+  <nav class="p-4">
+    <select id="species-anchor">
+      {speciesList.map((s) => <option value={s}>{s}</option>)}
+    </select>
+  </nav>
+
+  <div class="slider">
+    {speciesList.map((s) => (
+      <section id={s} class="slide">
+        <GraphicSpecies species={s} />
+      </section>
+    ))}
+  </div>
+
+  <script>
+    document.querySelector("#species-anchor")?.addEventListener("change", (evt) => {
+      const value = (evt.target as HTMLSelectElement).value;
+      location.hash = value;
+    });
+  </script>
+</Layout>
+
+<style>
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+</style>
