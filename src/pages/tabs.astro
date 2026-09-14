@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+import { Tabs, TabsList, TabsTab, TabsPanel } from "accessible-astro-components";
+
+const speciesList = ["Adelie", "Chinstrap", "Gentoo"];
+---
+
+<Layout>
+  <div class="p-4">
+    <h1 class="text-2xl mb-4">Onglets des espèces</h1>
+
+    <Tabs>
+      <TabsList class="flex gap-2">
+        {speciesList.map((s, i) => (
+          <TabsTab
+            id={`tab-${s}`}
+            controls={`panel-${s}`}
+            selected={i === 0}
+            class="px-4 py-2 font-bold rounded-t border-2 aria-selected:!bg-blue-600 aria-selected:!text-white"
+          >
+            {s}
+          </TabsTab>
+        ))}
+      </TabsList>
+
+      {speciesList.map((s, i) => (
+        <TabsPanel
+          id={`panel-${s}`}
+          labelledby={`tab-${s}`}
+          selected={i === 0}
+          class="p-4 border-2 rounded-b"
+        >
+          <GraphicSpecies species={s} />
+        </TabsPanel>
+      ))}
+    </Tabs>
+  </div>
+</Layout>
