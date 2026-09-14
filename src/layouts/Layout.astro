@@ -11,7 +11,12 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body>
+ <body>
+    <nav class="flex gap-4 p-4">
+      <a href="/species/Adelie">Adelie</a>
+      <a href="/species/Gentoo">Gentoo</a>
+      <a href="/species/Chinstrap">Chinstrap</a>
+    </nav>
     <slot />
   </body>
 </html>
