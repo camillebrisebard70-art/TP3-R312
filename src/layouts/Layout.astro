@@ -12,13 +12,16 @@ import "../styles/global.css";
     <title>Astro Basics</title>
   </head>
   <body>
-    <nav class="p-4">
-      <select id="species">
+           <nav class="flex items-center gap-6 px-6 py-4 border-b bg-slate-900 text-white">
+      <a href="/" class="font-semibold hover:text-sky-400">Accueil</a>
+      <select id="species" class="rounded px-2 py-1 text-slate-900">
         <option value="">Toutes les espèces</option>
         <option value="Adelie">Adelie</option>
         <option value="Chinstrap">Chinstrap</option>
         <option value="Gentoo">Gentoo</option>
       </select>
+      <a href="/slider/" class="hover:text-sky-400">Slider</a>
+      <a href="/tabs/" class="hover:text-sky-400">Onglets</a>
     </nav>
     <slot />
 
